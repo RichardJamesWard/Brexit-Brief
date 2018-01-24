@@ -1,0 +1,174 @@
+body {
+    background-color: #DADBDF;
+}
+
+a {
+     text-decoration: none;
+     color: inherit;
+}
+
+/******************Header*************************/
+#header{
+    height:80px;
+    background-image: url("../img/Brexitflag.jpg");
+    background-size: cover;
+    width: 100%;
+}
+
+#header h1{
+    color: #F3F4F7;
+    font-family: 'Paytone One', sans-serif;
+    text-align: center;
+    padding: 0;
+    padding-top: 2px;
+    margin: 0;
+    margin-bottom: -10px;
+    font-size: 2.3rem;
+    text-shadow: rgba(0,0,0,.2) 2px 6px 5px,rgba(255,255,255,.4) 0 -4px 30px;  
+}
+
+#header h2{
+    color: #F3F4F7;
+    font-family: 'Paytone One', sans-serif;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    font-size: 1.4rem;
+    text-shadow: rgba(0,0,0,.2) 2px 6px 5px,rgba(255,255,255,.4) 0 -4px 30px; 
+}
+
+/******************COUNTDOWN*************************/
+
+#countdown{
+    height:27px;
+    background-color: black;
+    width: 100%;
+    margin-bottom: 0;
+}
+
+#clock {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.8rem;
+    color: red;
+    margin: auto;
+    text-align: center;
+    padding-top: 8px
+}
+
+
+/******************NAVBAR**************************/
+
+.sticky {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
+  z-index: 100;
+  border-top: 0;
+}
+
+#buttons{
+    height:30px;
+    width: 100%;
+    margin: 0;
+    margin-bottom: 10px;
+    padding: 0;
+
+    -webkit-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.75);
+}
+
+.button {
+    cursor: pointer;
+    display: inline-block;
+    height: 100%;
+    width: calc(100% / 3);
+     margin: 0;
+    padding: 0;
+    margin-right: -4.5px;
+    text-align: center;
+    background-color: #e0e0e0;
+
+    -webkit-box-shadow: inset -11px -11px 3px -9px rgba(128,128,128,0.83);
+    -moz-box-shadow: inset -11px -11px 3px -9px rgba(128,128,128,0.83);
+    box-shadow: inset -11px -11px 3px -9px rgba(128,128,128,0.83);
+}
+
+
+.inactive p {
+    margin: 0;
+    margin-top: 3.5px;
+    font-family: 'Archivo Black', sans-serif;
+    color: #757575;
+    text-shadow: #e0e0e0 1px 1px 0;
+
+}
+
+.active p {
+    margin: 0;
+    margin-top: 3.25px;
+    font-family: 'Archivo Black', sans-serif;
+    color:#bc2d2d;
+}
+
+.active {
+   background-color: #cccccc; 
+   -webkit-box-shadow: inset 11px 11px 3px -9px rgba(128,128,128,0.83);
+    -moz-box-shadow: inset 11px 11px 3px -9px rgba(128,128,128,0.83);
+    box-shadow: inset 11px 11px 3px -9px rgba(128,128,128,0.83); 
+}
+
+
+
+/******************ARTICLES**************************/
+.box {
+    height: 100px;
+    margin: 7px;
+    background-color: #F3F4F7;
+    -webkit-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.75);
+}
+
+.image{
+    height: 100px;
+    width: 100px;
+    display: inline;
+    float: left;
+    object-fit: cover
+}
+
+
+.text{
+    display: inline-block;
+    margin:4px;
+    max-width: calc(100% - 110px);
+    height: 72px;
+
+}
+
+.headline{
+    display: block;
+    font-size: 0.85rem;
+    margin: 0;
+
+}
+.description{
+    display: block;
+    font-size: 0.7rem;
+    margin:0;
+}
+
+.stamp{
+    height: 16px;
+    margin:0;
+    padding: 0;
+    margin-left: 4px;
+    display: inline-block;
+    width: calc(100% - 110px);
+    font-size: 0.7rem;
+}
+
+
+
