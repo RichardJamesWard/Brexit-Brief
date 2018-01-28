@@ -1,29 +1,4 @@
-/////////////////////////////////////////////////////// STICKY ////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-$(document).ready(function() {
-			// grab the initial top offset of the navigation 
-		   	var stickyNavTop = $('.nav').offset().top;
-		   	
-		   	// our function that decides weather the navigation bar should have "fixed" css position or not.
-		   	var stickyNav = function(){
-			    var scrollTop = $(window).scrollTop(); // our current vertical position from the top
-			         
-			    // if we've scrolled more than the navigation, change its position to fixed to stick to top,
-			    // otherwise change it back to relative
-			    if (scrollTop > stickyNavTop) { 
-			        $('.nav').addClass('sticky');
-			    } else {
-			        $('.nav').removeClass('sticky'); 
-			    }
-			};
-
-			stickyNav();
-			// and run it again every time you scroll
-			$(window).scroll(function() {
-				stickyNav();
-			});
-		});
 
 /////////////////////////////////////////////////////// COUNTDOWN ///////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -89,14 +64,16 @@ $("#people").click(function() {
 
 $.ajax({
 	/// Make AJAX request to get 12 employee profiles in json format
- 	url: 'https://newsapi.org/v2/everything?q=brexit&sources=the-economist,daily-mail,bbc-news,independent,the-telegraph,the-guardian-uk,bloomberg,buzzfeed,metro,mirror,financial-times,business-insider-uk,metro&from=2018-01-17&pageSize=100&apiKey=97c4df5c08b9410cb044133df517b0dc',
+ 	url: 'https://newsapi.org/v2/everything?q=brexit&sources=the-economist,daily-mail,bbc-news,independent,the-telegraph,the-guardian-uk,buzzfeed,metro,mirror,financial-times,business-insider-uk,metro&from=2018-01-17&pageSize=100&apiKey=97c4df5c08b9410cb044133df517b0dc',
   	dataType: 'json',
 
 	success: function(data) {
 
 		let news = data.articles;
-
-	var article = ` `;
+		var article = ` `;
+		var popular= ` `;
+		var i = 0;
+		var a = 0;
 
 		$.each(news, function( index, value ) {
 
@@ -108,8 +85,10 @@ $.ajax({
 			if(headline.length > 75) headline = headline.substring(0,75);
 			headline += 	`...`;
 
-			article += `<a href="${news[index].url}" target="_blank" >
-							<div  class="box">
+
+
+			article += `<a href="${news[index].url}" target="_blank" id="link-${a++}">
+							<div  class="box" id="article-${i++}">
 								<img class=image src="${news[index].urlToImage}"> 
 								<div class="text">
 									<h1 class=headline >${headline}</h1>
@@ -121,6 +100,17 @@ $.ajax({
 						</a>`;
   		 	
   		 	$("#news-reports").html(article);
+
+  		 	popular = `<div id="popular">
+  		 				<h1><span>Most Read</span></h1>
+  		 				<div class="number">1</div><div class="pophead"><a href="${news[0].url}" target="_blank">${news[0].title}</a></div>
+  		 				<div class="number">2</div><div class="pophead"><a href="${news[1].url}" target="_blank">${news[1].title}</a></div>
+  		 				<div class="number">3</div><div class="pophead"><a href="${news[2].url}" target="_blank">${news[2].title}</a></div>
+  		 				<div class="number">4</div><div class="pophead"><a href="${news[3].url}" target="_blank">${news[3].title}</a></div>
+  		 				<div class="number">5</div><div class="pophead"><a href="${news[4].url}" target="_blank">${news[4].title}</a></div>
+  		 			   </div>`
+
+  		 	$("#link-1").after(popular)
   		});
   	}	
 });

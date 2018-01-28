@@ -1,6 +1,3 @@
-body {
-    background-color: #DADBDF;
-}
 
 a {
      text-decoration: none;
@@ -9,75 +6,63 @@ a {
 
 /******************Header*************************/
 #header{
-    height:160px;
-    background-image: url("../img/Brexitflag.jpg");
+    min-height:80px;
+    background-color: #4a5470;
     background-size: cover;
     width: 100%;
 }
 
 #header h1{
+
     color: #F3F4F7;
-    font-family: 'Paytone One', sans-serif;
+    font-family: 'Arvo', serif;
     text-align: center;
     padding: 0;
-    padding-top: 4px;
     margin: 0;
-    margin-bottom: -30px;
-    font-size: 4.8rem;
-    text-shadow: rgba(0,0,0,.2) 2px 6px 5px,rgba(255,255,255,.4) 0 -4px 30px;  
+    padding-top: 7px;
+    margin-bottom: -5px;
+    font-size: 2.3rem;
+      
 }
 
 #header h2{
     color: #F3F4F7;
-    font-family: 'Paytone One', sans-serif;
+    font-family: 'Quattrocento', serif;
     text-align: center;
     padding: 0;
     margin: 0;
-    font-size: 2.8rem;
-    text-shadow: rgba(0,0,0,.2) 2px 6px 5px,rgba(255,255,255,.4) 0 -4px 30px; 
+    font-size: 1.48rem;
+   
 }
 
 /******************COUNTDOWN*************************/
 
 #countdown{
-    height:54px;
-    background-color: black;
+    height:27px;
+    background-color: #2b3142;
     width: 100%;
     margin-bottom: 0;
-    margin-bottom: -1px;
 }
 
 #clock {
     font-family: 'Press Start 2P', cursive;
-    font-size: 1.6rem;
+    font-size: 0.8rem;
     color: red;
     margin: auto;
     text-align: center;
-    padding-top: 16px
+    padding-top: 8px
 }
 
 
 /******************NAVBAR**************************/
 
-.sticky {
-  position: fixed;
-  width: 100%;
-  left: 0;
-  top: 0;
-  z-index: 100;
-  border-top: 0;
-}
-
 #buttons{
-    height:60px;
+    height:30px;
     width: 100%;
     margin: 0;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     padding: 0;
-
-    -webkit-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.75);
-    box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.75);
+    background-color: #2b3142
 }
 
 .button {
@@ -89,45 +74,43 @@ a {
     padding: 0;
     margin-right: -4.5px;
     text-align: center;
-    background-color: #e0e0e0;
+    background-color: #4a5470;
 
-    -webkit-box-shadow: inset -11px -11px 3px -9px rgba(128,128,128,0.83);
-    -moz-box-shadow: inset -11px -11px 3px -9px rgba(128,128,128,0.83);
-    box-shadow: inset -11px -11px 3px -9px rgba(128,128,128,0.83);
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    border-left: 2px solid #2b3142;
+    border-right: 2px solid #2b3142;
 }
 
 
 .inactive p {
     margin: 0;
-    margin-top: 7px;
-    font-family: 'Archivo Black', sans-serif;
-    font-size: 2.2rem;
-    color: #757575;
-    text-shadow: #e0e0e0 1px 1px 0;
+    margin-top: 5px;
+    font-family: 'Cabin', sans-serif;
+    color: #F3F4F7;
+    font-weight: bold;
 
 }
 
 .active p {
     margin: 0;
-    margin-top: 6.5px;
-    font-size: 2.2rem;
-    font-family: 'Archivo Black', sans-serif;
-    color:#bc2d2d;
+    margin-top: 5px;
+    font-family: 'Cabin', sans-serif;
+    color:#2b3142;
+    font-weight: bold;
 }
 
 .active {
-   background-color: #cccccc; 
-   -webkit-box-shadow: inset 11px 11px 3px -9px rgba(128,128,128,0.83);
-    -moz-box-shadow: inset 11px 11px 3px -9px rgba(128,128,128,0.83);
-    box-shadow: inset 11px 11px 3px -9px rgba(128,128,128,0.83); 
+   background-color: #DADBDF; 
 }
 
 
 
 /******************ARTICLES**************************/
 .box {
-    height: 200px;
-    margin: 14px;
+    height: 100px;
+    margin: 7px;
     background-color: #F3F4F7;
     -webkit-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.75);
@@ -135,8 +118,8 @@ a {
 }
 
 .image{
-    height: 200px;
-    width: 200px;
+    height: 100px;
+    width: 100px;
     display: inline;
     float: left;
     object-fit: cover
@@ -145,33 +128,274 @@ a {
 
 .text{
     display: inline-block;
-    margin:8px;
-    max-width: calc(100% - 220px);
-    height: 144px;
+    margin:4px;
+    max-width: calc(100% - 110px);
+    height: 72px;
 
 }
 
 .headline{
     display: block;
-    font-size: 1.7rem;
+    font-size: 0.85rem;
     margin: 0;
 
 }
 .description{
     display: block;
-    font-size: 1.4rem;
+    font-size: 0.7rem;
     margin:0;
 }
 
 .stamp{
-    height: 32px;
+    height: 16px;
     margin:0;
     padding: 0;
-    margin-left: 8px;
+    margin-left: 4px;
     display: inline-block;
-    width: calc(100% - 220px);
-    font-size: 1.4rem;
+    width: calc(100% - 110px);
+    font-size: 0.7rem;
 }
 
 
+/******************MEDIA QUERIES**************************/
 
+
+#container {
+width: 100%;
+min-height: 100vh;
+background-color: #DADBDF;
+}
+
+@media (min-width: 463px) {
+    .button {
+        width: 150px;
+    }
+}
+
+@media (min-width: 488px) {
+    #buttons {  
+        width: calc(100% - 25px);
+        padding-left: 10px;
+    }
+}
+
+@media (min-width: 870px) {
+    #clock {
+        display: inline;
+        float: right;
+        margin-top: 15px;
+        padding-right: 25px;
+    }
+    #countdown {
+        display: inline;
+    }
+
+    #buttons {  
+        display: inline;
+        height: 30px;
+    }
+
+    .button {
+        height: 30px;
+        margin-top: 15px;
+    }
+
+    #header2 {
+        height: 45px
+        width: 100%;
+        background-color: #2b3142;
+    }
+
+
+      #header {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        min-height: 125px;
+    }
+
+    #header h1 {
+        display: block;
+        text-align: left;
+        margin-left: 30px;
+        font-size: 3.8rem;
+   
+    }
+
+     #header h2 {
+        margin-left: 30px;
+        float:left;
+        font-size: 2.45rem;
+    }
+}
+
+@media (min-width: 1100px) {
+
+    a:hover .headline {
+            color: darkred;
+    }
+
+    #article-0:hover .headline {
+            color: red;
+    }
+
+    #container {
+        width: 1150px;
+        display: block;
+        margin: auto;
+
+
+    }
+
+    .box {
+        width: 340px;
+        margin:8px;
+        padding: 0;
+        display: inline-block;
+        float: left;
+        height: 400px;
+
+    }
+
+    #news-reports {
+        margin-left: 14px;
+        margin-top: 14px;
+        height: 100%;
+         overflow: auto;
+        padding-left: 25px
+    }
+
+    .image {
+        width: 100%;
+        height: 200px;
+    }
+
+    .text{
+        max-width: 100%;
+        max-height: 72px;
+    }
+
+    .headline {
+        max-width: 96%;
+        margin: auto;
+        font-size: 1.23rem;
+        font-family: 'Merriweather', serif;
+        padding-bottom: 6px;
+        margin-bottom: 6px;
+        padding-top: 6px;
+        margin-top: 0;
+        border-bottom: solid;
+        border-width: 1px;
+        border-color: grey;
+
+    }
+
+    .description {
+        max-width: 96%;
+         margin: auto;
+        font-family: 'PT Serif', serif;
+        font-size: 0.9rem;
+
+    }
+
+    #article-0  {
+        width: 697px;
+        position: relative;
+        text-align: center;
+        color: white;
+
+    }
+
+     #article-0 img {
+        height: 400px;
+        background: linear-gradient(#004092, #020202, transparent);
+    }
+
+    #article-0::after {
+        display: block;
+        position: relative;
+        background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0, #000 100%);
+        margin-top: 150px;
+        height: 250px;
+        width: 100%;
+        content: '';
+    }
+
+    #article-0 .headline {
+        border-style: none;
+        font-size: 2rem;
+    }
+
+
+     #article-0 .description {
+        display:none
+    }
+
+      #article-0 .stamp {
+        display:none
+    }
+
+    #article-0 .text {
+        position: absolute;
+        bottom: 26px;
+        left: 8px;
+        font-size: 2rem;
+        text-align: left;
+        z-index: 1;
+    }
+
+    #popular {
+        display: block;
+        width: 1050px;
+        margin:8px;
+        padding-bottom: 10px;
+        overflow: auto;
+        border-bottom: solid;
+        border-width: 2px;
+    }
+
+    .number{
+        display: inline-block;
+        float: left;
+        font-size: 3rem;
+        margin-top: -5px;
+        color: darkred;
+        font-family: 'Teko', sans-serif;
+    }
+
+    .pophead {
+        width: 185px;
+        margin:4px;
+        padding: 0;
+        padding-top: 16px;
+        display: inline-block;
+        float: left;
+        margin-top: -10px;
+        font-family: 'Merriweather', serif;
+        font-size: 1rem;
+        font-weight: bold;
+    }
+
+    .pophead:hover { 
+    color:darkred;
+    cursor: pointer;
+}
+
+
+ #popular  h1 {
+   width: 1050px; 
+   text-align: left; 
+   border-bottom: 2px solid #000; 
+   line-height: 0.1em;
+   margin: 10px 0 20px;
+   margin-top: 30px;
+   color: darkred; 
+   font-family: 'Merriweather', serif;
+
+} 
+#popular h1 span { 
+    background:#DADBDF; 
+    padding:0 10px; 
+}
+
+
+}
