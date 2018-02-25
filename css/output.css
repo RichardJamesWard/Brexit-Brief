@@ -228,7 +228,7 @@ label {
 
 .text {
   display: inline-block;
-  margin: 8px;
+  margin: 4px;
   max-width: calc(100% - 220px);
   height: 100px; }
 
@@ -248,8 +248,8 @@ label {
   padding: 0;
   margin-left: 8px;
   display: inline-block;
-  width: calc(100% - 230px);
-  font-size: 1.2rem; }
+  width: calc(100% - 100px);
+  font-size: .7rem; }
 
 .logo {
   width: 60px;
@@ -303,7 +303,19 @@ label {
     display: none; }
 
   .popular .stamp {
-    display: inline-block; } }
+    display: inline-block; }
+
+  .stamp {
+    height: 16px;
+    margin: 0;
+    padding: 0;
+    margin-left: 8px;
+    display: inline-block;
+    width: calc(100% - 230px);
+    font-size: 1.2rem; }
+
+  .text {
+    margin: 4px; } }
 @media (min-width: 463px) {
   .button {
     width: 150px; } }
