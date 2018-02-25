@@ -1,127 +1,4 @@
 
-
-
-
-#filter-results{
-    margin-left: 40px;
-     margin-right: 50px;
-     margin-top:12px;
-}
-
-label{
-    margin-right: 20px;
-    margin-top: 7px;
-    display: inline-block;
-}
-
-
-
-.filter{
-    display: inline-block;
-}
-
-
-
-.checkbox-custom {
-    opacity: 0;
-    position: absolute;
-
-
- 
-}
-
-.checkbox-custom, .checkbox-custom-label {
-    display: inline-block;
-    vertical-align: middle;
-    margin: 5px;
-    cursor: pointer;
-}
-
-.checkbox-custom-label,  {
-    position: relative;
-
-
-}
-
-.checkbox-custom + .checkbox-custom-label:before {
-    content: '';
-    background: #fff;
-    border: 2px solid #ddd;
-    display: inline-block;
-    vertical-align: middle;
-    width: 12px;
-    height: 12px;
-    padding: 2px;
-    margin-right: 2px;
-    text-align: center;
-    border-radius: 4px;  
-
-
-
-}
-
-.checkbox-custom:checked + .checkbox-custom-label:before {
-    content: "\f00c";
-    font-family: 'FontAwesome';
-    background: #4a5470;
-    line-height: 70%;
-    color: #fff;
-    font-size: 0.9rem;
-    border-radius: 4px;  
-
-}
-
-
-
-#select{
-    display: inline-block;
-    margin-left:15px;
-    font-weight: bold;
-    color: #2b3142;
-
-
-}
-
-#deselect{
-    display: inline-block;
-    margin-left:10px;
-    margin-right:15px;
-    font-weight: bold;
-    color: #2b3142;
-
-}
-
-#select:hover{
-    border-bottom: 2px solid;
-    cursor: pointer;
-}
-
-#deselect:hover{
-    border-bottom: 2px solid;
-    cursor: pointer;
-}
-
-.logo {
-    width: 60px;
-    height: 60px;
-    position: absolute;
-}
-
-
-.big-image .logo {
-    position: absolute;
-    z-index: 2;
-    top: 0;
-    left: 0;
-}
-
-
-
-
-
-
-
-
 body {
     background-color: #DADBDF;
 }
@@ -138,6 +15,14 @@ svg {
     display: none;
 }
 
+#container {
+width: 100%;
+min-height: 100vh;
+background-color: #eaeaef;
+padding-bottom: 20px;
+margin-bottom: 0; 
+}
+
 /******************Header*************************/
 #header{
     min-height:80px;
@@ -145,6 +30,13 @@ svg {
     background-size: cover;
     width: 100%;
 }
+
+#header2 {
+    padding-top: 5px;
+    background-color: #2b3142;
+
+    }
+
 
 #header h1{
 
@@ -172,6 +64,11 @@ svg {
 }
 
 /******************Info-Bar*************************/
+
+
+#info-bar {
+    display:none;
+}
 
 .up{
     color: green;
@@ -261,12 +158,132 @@ svg {
    background-color: #eaeaef; 
 }
 
+/******************FILTERS**************************/
 
+#filter-results{
+    margin-left: 40px;
+     margin-right: 50px;
+     margin-top:12px;
+     display: none;
+}
+
+label{
+    margin-right: 20px;
+    margin-top: 7px;
+    display: inline-block;
+}
+
+
+
+.filter{
+    display: inline-block;
+}
+
+
+.checkbox-custom {
+    opacity: 0;
+    position: absolute;
+
+ 
+}
+
+.checkbox-custom, .checkbox-custom-label {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.checkbox-custom-label,  {
+    position: relative;
+
+
+}
+
+.checkbox-custom + .checkbox-custom-label:before {
+    content: '';
+    background: #fff;
+    border: 2px solid #ddd;
+    display: inline-block;
+    vertical-align: middle;
+    width: 12px;
+    height: 12px;
+    padding: 2px;
+    margin-right: 2px;
+    text-align: center;
+    border-radius: 4px;  
+
+
+
+}
+
+.checkbox-custom:checked + .checkbox-custom-label:before {
+    content: "\f00c";
+    font-family: 'FontAwesome';
+    background: #4a5470;
+    line-height: 70%;
+    color: #fff;
+    font-size: 0.9rem;
+    border-radius: 4px;  
+
+}
+
+
+
+#select{
+    display: inline-block;
+    margin-left:15px;
+    font-weight: bold;
+    color: #2b3142;
+
+
+}
+
+#deselect{
+    display: inline-block;
+    margin-left:10px;
+    margin-right:15px;
+    font-weight: bold;
+    color: #2b3142;
+
+}
+
+#select:hover{
+    border-bottom: 2px solid;
+    cursor: pointer;
+}
+
+#deselect:hover{
+    border-bottom: 2px solid;
+    cursor: pointer;
+}
+
+#generate {
+    background-color: #4a5470;
+    border-style: none;
+    color: white;
+    padding:4px 8px;
+    font-weight:bold;
+}
+
+
+/******************Popular**************************/
+
+.popular:last-of-type {
+  display:none;
+    }
+
+.popular .stamp {
+    display: none;
+}
 
 /******************ARTICLES**************************/
+
+
+
 .box {
-    height: 100px;
-    margin: 7px;
+    height: 140px;
+    margin: 14px;
     background-color: #F3F4F7;
     -webkit-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.75);
@@ -274,8 +291,8 @@ svg {
 }
 
 .image{
-    height: 100px;
-    width: 100px;
+    height: 140px;
+    width: 200px;
     display: inline;
     float: left;
     object-fit: cover
@@ -284,20 +301,20 @@ svg {
 
 .text{
     display: inline-block;
-    margin:4px;
-    max-width: calc(100% - 110px);
-    height: 72px;
+    margin:8px;
+    max-width: calc(100% - 220px);
+    height: 100px;
 
 }
 
 .headline{
     display: block;
-    font-size: 0.85rem;
+    font-size: 1.6rem;
     margin: 0;
 
 }
 .description{
-    display: block;
+    display: none;
     font-size: 0.7rem;
     margin:0;
 }
@@ -306,23 +323,85 @@ svg {
     height: 16px;
     margin:0;
     padding: 0;
-    margin-left: 4px;
+    margin-left: 8px;
     display: inline-block;
-    width: calc(100% - 110px);
-    font-size: 0.7rem;
+    width: calc(100% - 230px);
+    font-size: 1.2rem;
+}
+
+
+.logo {
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    display:none;
+}
+
+
+.big-image .logo {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    display:none;
 }
 
 
 /******************MEDIA QUERIES**************************/
 
 
-#container {
-width: 100%;
-min-height: 100vh;
-background-color: #eaeaef;
-padding-bottom: 20px;
-margin-bottom: 0; 
+@media (max-width: 800px) {
+
+    .popular {
+        margin-bottom: 45px;
+    }
+    
+    .pop-container {
+        height: 140px;
+    margin: 14px;
+    background-color: #F3F4F7;
+    -webkit-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.75);
+
+    }
+
+
+     .poptitle { 
+        display: inline-block;
+        margin: 8px;
+        max-width: calc(100% - 220px);
+        height: 100px;
+        font-weight: bold;
+        font-size: 1.6rem;
+     }
+
+    .number {
+   position: absolute;
+   color: white;
+   height: 55px;
+   width: 55px;
+   background-color: red;
+   text-align: center;
+   font-size: 3rem;
+    }
+
+    .popular h1 {
+        font-size: 2rem;
+        margin-left:14px;
+        margin-bottom: 0;
+    }
+
+    .pop-stamp {
+        display: none;
+    }
+
+    .popular .stamp {
+    display: inline-block;
 }
+}
+
+
 
 @media (min-width: 463px) {
     .button {
@@ -330,18 +409,16 @@ margin-bottom: 0;
     }
 }
 
-@media (min-width: 488px) {
-    #buttons {  
-        width: calc(100% - 25px);
-        padding-left: 10px;
-    }
-}
 
 @media (min-width: 870px) {
+
+
 
     #buttons {  
         display: inline;
         height: 30px;
+        padding-left: 10px;
+        padding-right: 0px;
     }
 
     .button {
@@ -350,7 +427,7 @@ margin-bottom: 0;
     }
 
     #header2 {
-        height: 45px
+        height: 45px;
         width: 100%;
         background-color: #2b3142;
     }
@@ -381,6 +458,9 @@ margin-bottom: 0;
         text-align: left;
         font-size: 2.45rem;
     }
+
+
+
 }
 
 
@@ -390,6 +470,11 @@ margin-bottom: 0;
 
 @media (min-width: 800px) {
 
+
+    #info-bar {
+    display:block;
+    }
+
     a:hover .headline {
             color: darkred;
     }
@@ -397,6 +482,11 @@ margin-bottom: 0;
     .big-image:hover .headline {
             color: red;
     }
+
+
+    #filter-results{
+     display: block;
+}
 
     #container {
         width: 800px;
@@ -407,6 +497,19 @@ margin-bottom: 0;
 box-shadow: 0px 0px 38px 2px rgba(0,0,0,0.75);
 
 
+    }
+
+
+    .popular:first-of-type {
+  display:none;
+    }
+
+    .popular:last-of-type {
+  display: inline-block;
+    }
+
+       .popular img {
+  display:none;
     }
 
     .box {
@@ -458,6 +561,7 @@ box-shadow: 0px 0px 38px 2px rgba(0,0,0,0.75);
          margin: auto;
         font-family: 'PT Serif', serif;
         font-size: 0.75rem;
+        display: block;
     } 
 
     .stamp {
@@ -466,6 +570,16 @@ box-shadow: 0px 0px 38px 2px rgba(0,0,0,0.75);
          font-family: 'PT Serif', serif;
          max-width: 100%;
     }
+
+    .logo {
+    display:block;
+}
+
+
+    .big-image .logo {
+    display:block;
+}
+
 
 
 
@@ -612,7 +726,7 @@ box-shadow: 0px 0px 38px 2px rgba(0,0,0,0.75);
             /************************Top Five lists***********************************/
             /*************************************************************************/
              
-            #popular {
+            .popular {
                 display: inline-block;
                 width: 340px;
                 margin:8px;
@@ -626,6 +740,7 @@ box-shadow: 0px 0px 38px 2px rgba(0,0,0,0.75);
             .pop-container {
                     width: 100%;
                     display: block;
+                    max-height:65px;
 
             }
 
@@ -645,7 +760,7 @@ box-shadow: 0px 0px 38px 2px rgba(0,0,0,0.75);
                 display: inline-block;
                 margin-top: -10px;
                 font-family: 'Merriweather', serif;
-                font-size: 1rem;
+                font-size: .8rem;
                 font-weight: bold;
             }
 
@@ -655,7 +770,7 @@ box-shadow: 0px 0px 38px 2px rgba(0,0,0,0.75);
              }
 
 
-             #popular  h1 {
+             .popular  h1 {
                width: 340px; 
                text-align: left; 
                border-bottom: 2px solid #000; 
@@ -666,7 +781,7 @@ box-shadow: 0px 0px 38px 2px rgba(0,0,0,0.75);
                font-family: 'Merriweather', serif;
 
             } 
-            #popular h1 span { 
+            .popular h1 span { 
                 background:#eaeaef; 
                 padding:0 10px; 
             }
@@ -694,7 +809,7 @@ box-shadow: 0px 0px 38px 2px rgba(0,0,0,0.75);
     display: inline-block;
 }
 
-    #popular {
+    .popular {
         height: 100%;
         display: block;
         width: 1050px;
@@ -741,7 +856,7 @@ box-shadow: 0px 0px 38px 2px rgba(0,0,0,0.75);
 }
 
 
- #popular  h1 {
+ .popular  h1 {
    width: 1050px; 
    text-align: left; 
    border-bottom: 2px solid #000; 
