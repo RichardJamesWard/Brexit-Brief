@@ -1,11 +1,15 @@
 body {
   background-color: #DADBDF; }
 
+.hidden {
+  color: blue;
+  display: none; }
+
 a {
   text-decoration: none;
   color: inherit; }
 
-svg {
+#GB {
   height: 100px;
   width: 65px;
   display: inline-block;
@@ -15,7 +19,7 @@ svg {
   width: 100%;
   min-height: 100vh;
   background-color: #eaeaef;
-  padding-bottom: 20px;
+  padding-bottom: 5px;
   margin-bottom: 0; }
 
 /******************Header*************************/
@@ -27,7 +31,8 @@ svg {
 
 #header2 {
   padding-top: 5px;
-  background-color: #2b3142; }
+  background-color: #2b3142;
+  height: 30px; }
 
 #header h1 {
   color: #F3F4F7;
@@ -90,7 +95,8 @@ svg {
   margin: 0;
   margin-bottom: 10px;
   padding: 0;
-  background-color: #2b3142; }
+  background-color: #2b3142;
+  display: inline; }
 
 .button {
   cursor: pointer;
@@ -122,23 +128,46 @@ svg {
   color: #2b3142;
   font-weight: bold; }
 
+.button p:hover {
+  color: red; }
+
 .active {
   background-color: #eaeaef; }
 
 /******************FILTERS**************************/
-#filter-results {
-  margin-left: 40px;
-  margin-right: 50px;
-  margin-top: 12px;
+.filter-button {
+  margin-left: 16px;
+  margin-top: 8px;
+  font-weight: bold;
+  color: #2b3142;
+  cursor: pointer;
+  display: inline-block;
+  margin-bottom: 4px;
+  border-bottom: 2px solid;
+  border-color: #eaeaef; }
+
+.filter-button:hover {
+  border-color: #2b3142; }
+
+#filter-down {
   display: none; }
 
-label {
-  margin-right: 20px;
-  margin-top: 7px;
-  display: inline-block; }
+.filter-button-wide {
+  margin-top: 5px;
+  display: none; }
 
 .filter {
-  display: inline-block; }
+  display: block; }
+
+#columns {
+  column-count: 3;
+  column-gap: 0;
+  column-width: 32%;
+  margin-bottom: 8px; }
+
+#filter-results {
+  display: none;
+  margin-left: 8px; }
 
 .checkbox-custom {
   opacity: 0;
@@ -177,7 +206,7 @@ label {
 
 #select {
   display: inline-block;
-  margin-left: 15px;
+  margin-left: 4px;
   font-weight: bold;
   color: #2b3142; }
 
@@ -203,12 +232,23 @@ label {
   padding: 4px 8px;
   font-weight: bold; }
 
+#error-message {
+  margin: 0;
+  display: inline-block;
+  margin-left: 10px;
+  font-weight: bold;
+  color: red;
+  background-color: light-grey; }
+
 /******************Popular**************************/
 .popular:last-of-type {
   display: none; }
 
 .popular .stamp {
   display: none; }
+
+.popular h1 {
+  font-family: 'Merriweather', serif; }
 
 /******************ARTICLES**************************/
 .box {
@@ -230,17 +270,21 @@ label {
   display: inline-block;
   margin: 4px;
   max-width: calc(100% - 220px);
-  height: 100px; }
+  height: 110px;
+  overflow: hidden; }
 
 .headline {
   display: block;
-  font-size: 1.6rem;
-  margin: 0; }
+  font-size: .95rem;
+  margin: 0;
+  font-family: 'PT Serif', serif;
+  margin-bottom: 5px; }
 
 .description {
-  display: none;
-  font-size: 0.7rem;
-  margin: 0; }
+  font-size: 0.8rem;
+  margin: 0;
+  text-align: justify;
+  font-family: 'PT Serif', serif; }
 
 .stamp {
   height: 16px;
@@ -249,26 +293,56 @@ label {
   margin-left: 8px;
   display: inline-block;
   width: calc(100% - 100px);
-  font-size: .7rem; }
+  font-size: .7rem;
+  overflow: hidden; }
 
 .logo {
-  width: 60px;
-  height: 60px;
+  width: 45px;
+  height: 45px;
   position: absolute;
-  display: none; }
+  display: block; }
 
 .big-image .logo {
   position: absolute;
-  z-index: 2;
-  top: 0;
-  left: 0;
-  display: none; }
+  display: block; }
+
+/******************FOOTER**************************/
+footer {
+  font-size: 0.75em;
+  text-align: center;
+  clear: both;
+  padding-top: 10px;
+  padding-bottom: 5px;
+  color: grey; }
 
 /******************MEDIA QUERIES**************************/
-@media (max-width: 800px) {
-  .popular {
-    margin-bottom: 45px; }
+@media (max-width: 500px) {
+  .pop-text {
+    display: inline-block;
+    min-width: calc(100% - 150px);
+    margin: 4px; }
 
+  #header h1 {
+    font-size: 2rem; }
+
+  #header h2 {
+    font-size: 1.3rem; }
+
+  .button p {
+    font-size: .9rem; }
+
+  .image {
+    width: 140px; }
+
+  .text {
+    min-width: calc(100% - 150px); }
+
+  .stamp {
+    min-width: calc(100% - 150px); }
+
+  .checkbox-custom-label {
+    font-size: 0.8rem; } }
+@media (max-width: 799px) {
   .pop-container {
     height: 140px;
     margin: 14px;
@@ -277,30 +351,32 @@ label {
     -moz-box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.75);
     box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.75); }
 
+  .pop-text {
+    display: inline-block;
+    margin: 4px;
+    height: 110px;
+    overflow: hidden;
+    max-width: calc(100% - 220px); }
+
   .poptitle {
     display: inline-block;
-    margin: 8px;
-    max-width: calc(100% - 220px);
-    height: 100px;
     font-weight: bold;
-    font-size: 1.6rem; }
+    font-size: .95rem;
+    font-family: 'PT Serif', serif;
+    overflow: hidden; }
 
   .number {
-    position: absolute;
-    color: white;
-    height: 55px;
-    width: 55px;
-    background-color: red;
-    text-align: center;
-    font-size: 3rem; }
+    display: none; }
 
   .popular h1 {
-    font-size: 2rem;
+    font-size: 1.65rem;
     margin-left: 14px;
-    margin-bottom: 0; }
+    margin-bottom: 0;
+    display: none; }
 
   .pop-stamp {
-    display: none; }
+    display: none;
+    overflow: hidden; }
 
   .popular .stamp {
     display: inline-block; }
@@ -309,17 +385,24 @@ label {
     height: 16px;
     margin: 0;
     padding: 0;
-    margin-left: 8px;
+    margin-left: 4px;
     display: inline-block;
     width: calc(100% - 230px);
-    font-size: 1.2rem; }
+    font-size: .7rem;
+    overflow: hidden; }
 
   .text {
     margin: 4px; } }
 @media (min-width: 463px) {
   .button {
     width: 150px; } }
+@media (max-width: 620px) {
+  #columns {
+    column-count: 2; } }
 @media (min-width: 870px) {
+  .filter-button-wide {
+    margin-top: 20px; }
+
   #buttons {
     display: inline;
     height: 30px;
@@ -342,7 +425,7 @@ label {
 
   #title-container {
     display: inline-block;
-    width: 500px; }
+    width: 520px; }
 
   #header h1 {
     display: inline-block;
@@ -367,8 +450,113 @@ label {
   .big-image:hover .headline {
     color: red; }
 
+  .filter-button {
+    display: none; }
+
+  .filter-button-wide {
+    display: inline-block;
+    float: right;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    margin-right: 16px; }
+
+  .filter-button-wide:hover {
+    color: red; }
+
+  #filter-up-wide {
+    display: none; }
+
   #filter-results {
     display: block; }
+
+  #columns {
+    column-count: auto; }
+
+  #filter-results {
+    margin-left: 40px;
+    margin-right: 50px;
+    margin-top: 12px; }
+
+  label {
+    margin-right: 20px;
+    margin-top: 7px;
+    display: inline-block; }
+
+  /************************Filter******************************/
+  .filter {
+    display: inline-block; }
+
+  .checkbox-custom {
+    opacity: 0;
+    position: absolute; }
+
+  .checkbox-custom, .checkbox-custom-label {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 5px;
+    cursor: pointer; }
+
+  .checkbox-custom-label {
+    position: relative; }
+
+  .checkbox-custom + .checkbox-custom-label:before {
+    content: '';
+    background: #fff;
+    border: 2px solid #ddd;
+    display: inline-block;
+    vertical-align: middle;
+    width: 12px;
+    height: 12px;
+    padding: 2px;
+    margin-right: 2px;
+    text-align: center;
+    border-radius: 4px; }
+
+  .checkbox-custom:checked + .checkbox-custom-label:before {
+    content: "\f00c";
+    font-family: 'FontAwesome';
+    background: #4a5470;
+    line-height: 70%;
+    color: #fff;
+    font-size: 0.9rem;
+    border-radius: 4px; }
+
+  #select {
+    display: inline-block;
+    font-weight: bold;
+    margin-left: 4px;
+    color: #2b3142; }
+
+  #deselect {
+    display: inline-block;
+    margin-left: 10px;
+    margin-right: 15px;
+    font-weight: bold;
+    color: #2b3142; }
+
+  #select:hover {
+    border-bottom: 2px solid;
+    cursor: pointer; }
+
+  #deselect:hover {
+    border-bottom: 2px solid;
+    cursor: pointer; }
+
+  #generate {
+    background-color: #4a5470;
+    border-style: none;
+    color: white;
+    padding: 4px 8px;
+    font-weight: bold; }
+
+  #error-message {
+    margin: 0;
+    display: inline-block;
+    margin-left: 10px;
+    font-weight: bold;
+    color: red;
+    background-color: light-grey; }
 
   #container {
     width: 800px;
@@ -378,6 +566,17 @@ label {
     -moz-box-shadow: 0px 0px 38px 2px rgba(0, 0, 0, 0.75);
     box-shadow: 0px 0px 38px 2px rgba(0, 0, 0, 0.75); }
 
+  /************************Popular******************************/
+  .number {
+    vertical-align: top; }
+
+  .popular .logo {
+    display: none; }
+
+  .pop-text {
+    display: inline-block;
+    margin-bottom: 5px; }
+
   .popular:first-of-type {
     display: none; }
 
@@ -385,6 +584,9 @@ label {
     display: inline-block; }
 
   .popular img {
+    display: none; }
+
+  .popular .description {
     display: none; }
 
   .box {
@@ -413,7 +615,7 @@ label {
   .headline {
     max-width: 96%;
     margin: auto;
-    font-size: 1rem;
+    font-size: 0.95rem;
     font-family: 'Merriweather', serif;
     padding-bottom: 6px;
     margin-bottom: 6px;
@@ -427,7 +629,7 @@ label {
     max-width: 96%;
     margin: auto;
     font-family: 'PT Serif', serif;
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     display: block; }
 
   .stamp {
@@ -437,13 +639,18 @@ label {
     max-width: 100%; }
 
   .logo {
+    width: 60px;
+    height: 60px;
     display: block; }
 
   .big-image .logo {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
     display: block; }
 
   /*************************Big image******************************/
-  /*************************************************************************/
   .big-image {
     width: 697px;
     position: relative;
@@ -475,15 +682,15 @@ label {
 
   .big-image .text {
     position: absolute;
-    bottom: 45px;
+    bottom: 10px;
     left: 8px;
     font-size: 2rem;
     text-align: left;
     z-index: 1;
-    height: 72px; }
+    height: 75px;
+    overflow: hidden; }
 
   /*************************Third-Height Article************************************/
-  /*************************************************************************/
   .third-h {
     height: 123px;
     float: left; }
@@ -511,14 +718,12 @@ label {
     display: none; }
 
   .third-h .stamp {
-    height: 5%;
+    height: 18px;
     display: inline-block;
     width: 200px;
-    margin-top: 10px;
     margin-left: 8px; }
 
   /*************************Third-width Article************************************/
-  /*************************************************************************/
   .third-w {
     width: 221.5px; }
 
@@ -526,7 +731,7 @@ label {
     font-size: 0.9rem; }
 
   .third-w .description {
-    font-size: 0.75rem; }
+    font-size: 0.8rem; }
 
   .third-w .stamp {
     width: 200px; }
@@ -538,7 +743,6 @@ label {
     height: 228px; }
 
   /*************************Two-Third-width Article***************************/
-  /*************************************************************************/
   .two-third-w {
     width: 458px; }
 
@@ -552,7 +756,6 @@ label {
     width: 200px; }
 
   /************************Top Five lists***********************************/
-  /*************************************************************************/
   .popular {
     display: inline-block;
     width: 340px;
@@ -566,7 +769,7 @@ label {
   .pop-container {
     width: 100%;
     display: block;
-    max-height: 65px; }
+    max-height: 70px; }
 
   .number {
     display: inline-block;
@@ -602,14 +805,15 @@ label {
 
   .popular h1 span {
     background: #eaeaef;
-    padding: 0 10px; } }
+    padding: 0 10px; } 
+  }
 /************************Three Column Layout******************************/
 /*************************************************************************/
-@media (min-width: 1100px) {
+@media (min-width: 1150px) {
   #container {
     width: 1150px; }
 
-  svg {
+  #GB {
     display: inline-block; }
 
   .popular {
@@ -634,6 +838,9 @@ label {
     color: darkred;
     padding-right: 0;
     font-family: 'Teko', sans-serif; }
+
+  .pop-text {
+    display: block; }
 
   .poptitle {
     width: 185px;
@@ -660,5 +867,84 @@ label {
     margin-top: 30px;
     color: darkred;
     font-family: 'Merriweather', serif; } }
+
+
+/************************PEOPLE (POLLING CHARTS)**************************/
+/*************************************************************************/
+
+#charts {
+  margin-top: 35px;
+  display: none; }
+
+.chart-container {
+  max-width: 681px;
+  padding: 16px;
+  display: block;
+  margin: 30px auto;
+  background-color: #F3F4F7;
+  -webkit-box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.75);
+  padding-bottom: 40px; }
+
+.chart-info-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 0;
+  text-align: justify;
+  font-family: 'PT Serif', serif;
+  padding: 10px 16px 0 16px; }
+
+.chart-info {
+  font-size: 0.8rem;
+  margin: 0;
+  text-align: justify;
+  font-family: 'PT Serif', serif;
+  padding: 10px 16px 0 16px; }
+
+.chart-stamp {
+  font-size: 0.7rem;
+  margin: 0;
+  font-family: 'PT Serif', serif;
+  margin: 15px 16px 0 16px;
+  color: dark-grey;
+  float: right; }
+
+#chart0 {
+  height: 800px; }
+
+#chart3 {
+  height: 800px; }
+
+#chart6 {
+  height: 800px; }
+
+/*******************PUNDITS (NODE.js TWITTER FEED)*************************/
+/*************************************************************************/
+
+#pundit-posts {
+  display: none; }
+
+#pundit-posts h1 {
+  text-align: center;
+  margin: 10px 0; }
+
+#pundit-posts h2 {
+  margin: auto;
+  text-align: center;
+  max-width: 370px; }
+
+#exclamation {
+  padding-top: 60px;
+  margin: auto;
+  fill: green;
+  height: 200px;
+  display: block; }
+
+#wait {
+  height: 150px;
+  width: 150px;
+  display: block;
+  margin: auto; }
 
 /*# sourceMappingURL=output.css.map */

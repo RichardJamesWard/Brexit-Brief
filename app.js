@@ -1,11 +1,15 @@
 
-function getYesterdaysDate() {
+function getDateMinus5() {
     var date = new Date();
     date.setDate(date.getDate()-5);
     return date.getFullYear() + '-' + ('0' + (date.getMonth()+1)).slice(-2)  + '-' + ('0' + date.getDate()).slice(-2);
 }
 
-console.log(getYesterdaysDate());
+function getYesterdaysDate() {
+    var date = new Date();
+    date.setDate(date.getDate()-1);
+    return date.getFullYear() + '-' + ('0' + (date.getMonth()+1)).slice(-2)  + '-' + ('0' + date.getDate()).slice(-2);
+}
 
 $('#bbc-news, #independent, #the-guardian-uk, #metro, #mirror, #the-economist, #business-insider-uk, #bloomberg').attr('checked', true); 
 
@@ -56,7 +60,7 @@ var x = setInterval(function() {
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 $.ajax({
- 	url: `http://www.apilayer.net/api/historical&date=${getYesterdaysDate()}?access_key=`,
+ 	url: `http://www.apilayer.net/api/historical&date=${getYesterdaysDate()}?access_key=addae9ef05ca82acdf93860e00a752d5`,
   	dataType: 'json',
 
 	success: function(data) {
@@ -87,7 +91,7 @@ $.ajax({
 
 
 $.ajax({
- 	url: 'http://www.apilayer.net/api/live?access_key=',
+ 	url: 'http://www.apilayer.net/api/live?access_key=addae9ef05ca82acdf93860e00a752d5',
   	dataType: 'json',
 
 	success: function(data) {
@@ -131,27 +135,105 @@ $.ajax({
 /////////////////////////////////////////////////////// NAV /////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
 $("#press").click(function() {
  $("#pundits, #people").removeClass( "active" );
  $(".button").addClass( "inactive" );
  $( "#news-reports" ).show();
+ $( "#filter-results" ).hide();
+ $( "#charts" ).hide();
  $(this).addClass("active");
+ $("#FBW").removeClass("hidden");
+ $("#FB").removeClass("hidden");
+ $("#FBW").addClass("filter-button-wide");
+ $("#FB").addClass("filter-button");
+ $( "#pundit-posts" ).hide();
+ 
+ 
 });
 
 $("#pundits").click(function() {
  $("#press, #people").removeClass( "active" );
  $(".button").addClass( "inactive" );
  $( "#news-reports" ).hide();
+ $( "#filter-results" ).hide();
+ $( "#charts" ).hide();
  $(this).addClass("active");
+ $("#FBW").addClass("hidden");
+ $("#FB").addClass("hidden");
+ $("#FBW").removeClass("filter-button-wide");
+ $("#FB").removeClass("filter-button");
+ $( "#pundit-posts" ).show();
+
 });
 
 $("#people").click(function() {
  $("#press, #pundits").removeClass( "active" );
  $(".button").addClass( "inactive" );
+ $( "#charts" ).show();
  $( "#news-reports" ).hide();
+ $( "#filter-results" ).hide();
  $(this).addClass("active");
+ $("#FBW").addClass("hidden");
+ $("#FB").addClass("hidden");
+ $("#FBW").removeClass("filter-button-wide");
+ $("#FB").removeClass("filter-button");
+ $( "#pundit-posts" ).hide();
+
 });
+
+
+/////////////////////////////////////////////////////// SELECTION MENU/////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+$(".filter-button-wide").click(function() {
+	if ($("#filter-results").css("Display") === "none") {
+		$( "#filter-results").slideDown();
+		$("#filter-up-wide").hide();
+		$("#filter-down-wide").show();
+	} else {
+		$( "#filter-results" ).slideUp();
+		$("#filter-up-wide").show();
+		$("#filter-down-wide").hide();
+	}
+});
+
+
+
+$(".filter-button").click(function() {
+	if ($("#filter-results").css("Display") === "none") {
+		$( "#filter-results").slideDown();
+		$("#filter-up").hide();
+		$("#filter-down").show();
+	} else {
+		$( "#filter-results" ).slideUp();
+		$("#filter-up").show();
+		$("#filter-down").hide();
+	}
+});
+
+$( "#generate" ).click(function() {
+	let sources = ``
+
+
+$("input:checkbox").each(function(){
+    var $this = $(this);
+
+    if($this.is(":checked")){
+        sources +=`${$this.attr("id")},`
+        
+    }
+});
+
+if (sources.length <=  1){
+	$("#error-message").show();
+	$("#error-message").html("Please select at least one news source")
+} else {
+$("#error-message").hide();
+ GenerateNews(sources);
+}
+
+});
+
+
 
 
 /////////////////////////////////////////////////////// DEFAULT ARTICLES///////////////////////////////////////////////
@@ -159,9 +241,21 @@ $("#people").click(function() {
 
 function GenerateNews(sources) {
 
+$(document).ajaxStart(function(){
+    $("#wait").css("display", "block");
+});
+
+$(document).ajaxComplete(function(){
+    $("#wait").css("display", "none");
+});
+
+
 $.ajax({
- 	url: `https://newsapi.org/v2/everything?q=brexit&from=${getYesterdaysDate()}&sortBy=publishedAt&sources=${sources}&pageSize=100&apiKey=`,
+ 	url: `https://newsapi.org/v2/everything?q=brexit&from=${getDateMinus5()}&sortBy=publishedAt&sources=${sources}&pageSize=100&apiKey=97c4df5c08b9410cb044133df517b0dc`,
   	dataType: 'json',
+
+
+
 
 	success: function(data) {
 
@@ -171,8 +265,16 @@ $.ajax({
 		var i = 0;
 		var a = 0;
 
+		if (data.totalResults < 1){
+					$("#error-message").html("No articles found for this publisher");
+					$("#error-message").show();
+				} 
+		
 		$.each(news, function( index, value ) {
-
+			console.log(data.totalResults)
+				
+					if (data.totalResults < 7) {
+				
 			var description = news[index].description;
 			// if(description.length > 150) description = description.substring(0,150);
 			// description += 	`...`;
@@ -201,13 +303,43 @@ $.ajax({
   		 	
   		 	$("#news-reports").html(article);
 
+		} else if (data.totalResults >= 7) {
+			
+			var description = news[index+5].description;
+			// if(description.length > 150) description = description.substring(0,150);
+			// description += 	`...`;
+
+			var headline = news[index+5].title;
+			// if(headline.length > 75) {headline = headline.substring(0,75);
+			// headline += 	`...`;}
+
+			var date = news[index+5].publishedAt;
+			if(date.length > 10) date = date.substring(0,10);
+
+
+
+			article += `<a href="${news[index+5].url}" target="_blank" id="link-${a++}">
+							<div  class="box" id="article-${i++}">
+								<img class=image src="${news[index+5].urlToImage}"> 
+								<img class=logo src="img/${news[index+5].source.id}.png"> 
+								<div class="text">
+									<h1 class=headline >${headline}</h1>
+									<p class=description>${description}</p>
+									
+								</div>	
+								<p class="stamp"><strong>${news[index+5].source.name}</strong> on ${date}</p>
+							</div>
+						</a>`;
+  		 	
+  		 	$("#news-reports").html(article);
+
   		 	popular = `<div class="popular">
   		 				<h1><span>Most Recent</span></h1>
-  		 				<a href="${news[0].url}" target="_blank"><div class="pop-container"><img class=image src="${news[0].urlToImage}"><div class="number">1</div><div class="poptitle">${news[0].title}<span class="pop-stamp" style="color:darkred;font-style:italic;"> ${news[0].source.name}</span></div><p class="stamp"><strong>${news[0].source.name}</strong> on ${date}</p></div></a>
-  		 				<a href="${news[1].url}" target="_blank"><div class="pop-container"><img class=image src="${news[1].urlToImage}"><div class="number">2</div><div class="poptitle">${news[1].title}<span class="pop-stamp" style="color:darkred;font-style:italic;"> ${news[1].source.name}</span></div><p class="stamp"><strong>${news[1].source.name}</strong> on ${date}</p></div></a>
-  		 				<a href="${news[2].url}" target="_blank"><div class="pop-container"><img class=image src="${news[2].urlToImage}"><div class="number">3</div><div class="poptitle">${news[2].title}<span class="pop-stamp" style="color:darkred;font-style:italic;"> ${news[2].source.name}</span></div><p class="stamp"><strong>${news[2].source.name}</strong> on ${date}</p></div></a>
-  		 				<a href="${news[3].url}" target="_blank"><div class="pop-container"><img class=image src="${news[3].urlToImage}"><div class="number">4</div><div class="poptitle">${news[3].title}<span class="pop-stamp" style="color:darkred;font-style:italic;"> ${news[3].source.name}</span></div><p class="stamp"><strong>${news[3].source.name}</strong> on ${date}</p></div></a>
-  		 				<a href="${news[4].url}" target="_blank"><div class="pop-container"><img class=image src="${news[4].urlToImage}"><div class="number">5</div><div class="poptitle">${news[4].title}<span class="pop-stamp" style="color:darkred;font-style:italic;"> ${news[4].source.name}</span></div><p class="stamp"><strong>${news[4].source.name}</strong> on ${date}</p></div></a>
+  		 				<a href="${news[0].url}" target="_blank"><div class="pop-container"><img class=image src="${news[0].urlToImage}"><img class=logo src="img/${news[0].source.id}.png"><div class="number">1</div><div class="pop-text"><div class="poptitle">${news[0].title}<br><span class="pop-stamp" style="color:darkred;font-style:italic;"> ${news[0].source.name}</span></div><div class="description">${news[0].description}</div></div><p class="stamp"><strong>${news[0].source.name}</strong> on ${date}</p></div></a>
+  		 				<a href="${news[1].url}" target="_blank"><div class="pop-container"><img class=image src="${news[1].urlToImage}"><img class=logo src="img/${news[1].source.id}.png"><div class="number">2</div><div class="pop-text"><div class="poptitle">${news[1].title}<br><span class="pop-stamp" style="color:darkred;font-style:italic;"> ${news[1].source.name}</span></div><div class="description">${news[1].description}</div></div><p class="stamp"><strong>${news[1].source.name}</strong> on ${date}</p></div></a>
+  		 				<a href="${news[2].url}" target="_blank"><div class="pop-container"><img class=image src="${news[2].urlToImage}"><img class=logo src="img/${news[2].source.id}.png"><div class="number">3</div><div class="pop-text"><div class="poptitle">${news[2].title}<br><span class="pop-stamp" style="color:darkred;font-style:italic;"> ${news[2].source.name}</span></div><div class="description">${news[2].description}</div></div><p class="stamp"><strong>${news[2].source.name}</strong> on ${date}</p></div></a>
+  		 				<a href="${news[3].url}" target="_blank"><div class="pop-container"><img class=image src="${news[3].urlToImage}"><img class=logo src="img/${news[3].source.id}.png"><div class="number">4</div><div class="pop-text"><div class="poptitle">${news[3].title}<br><span class="pop-stamp" style="color:darkred;font-style:italic;"> ${news[3].source.name}</span></div><div class="description">${news[3].description}</div></div><p class="stamp"><strong>${news[3].source.name}</strong> on ${date}</p></div></a>
+  		 				<a href="${news[4].url}" target="_blank"><div class="pop-container"><img class=image src="${news[4].urlToImage}"><img class=logo src="img/${news[4].source.id}.png"><div class="number">5</div><div class="pop-text"><div class="poptitle">${news[4].title}<br><span class="pop-stamp" style="color:darkred;font-style:italic;"> ${news[4].source.name}</span></div><div class="description">${news[4].description}</div></div><p class="stamp"><strong>${news[4].source.name}</strong> on ${date}</p></div></a>
   		 			   </div>`
 
   		 	$("#link-0").before(popular)
@@ -217,6 +349,7 @@ $.ajax({
   		 	$("#article-12, #article-18, #article-22, #article-30, #article-36, #article-42, #article-51,   #article-62, #article-63, #article-64, #article-83, #article-87").addClass("third-w")
   		 	$("#article-13, #article-17, #article-21, #article-29, #article-35, #article-41, #article-50,  #article-84, #article-88").addClass("two-third-w")
   		 	$("#article-16,  #article-45,  #article-99").addClass("big-image")
+  		 } 
   		});
   	}	
 });
@@ -224,24 +357,8 @@ $.ajax({
 
 GenerateNews("the-economist,bloomberg,bbc-news,independent,the-guardian-uk,metro,mirror,business-insider-uk");
 
-/////////////////////////////////////////////////////// SELECTION MENU/////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
-$( "#generate" ).click(function() {
-	let sources = ``
 
 
-$("input:checkbox").each(function(){
-    var $this = $(this);
-
-    if($this.is(":checked")){
-        sources +=`${$this.attr("id")},`
-        console.log(sources);
-        GenerateNews(sources)
-    }
-});
-
- GenerateNews(sources);
-});
