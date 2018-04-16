@@ -60,7 +60,7 @@ var x = setInterval(function() {
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 $.ajax({
- 	url: `http://www.apilayer.net/api/historical&date=${getYesterdaysDate()}?access_key=addae9ef05ca82acdf93860e00a752d5`,
+ 	url: `http://www.apilayer.net/api/historical&date=${getYesterdaysDate()}?access_key=******************`,
   	dataType: 'json',
 
 	success: function(data) {
@@ -91,7 +91,7 @@ $.ajax({
 
 
 $.ajax({
- 	url: 'http://www.apilayer.net/api/live?access_key=addae9ef05ca82acdf93860e00a752d5',
+ 	url: 'http://www.apilayer.net/api/live?access_key=******************',
   	dataType: 'json',
 
 	success: function(data) {
@@ -251,7 +251,7 @@ $(document).ajaxComplete(function(){
 
 
 $.ajax({
- 	url: `https://newsapi.org/v2/everything?q=brexit&from=${getDateMinus5()}&sortBy=publishedAt&sources=${sources}&pageSize=100&apiKey=97c4df5c08b9410cb044133df517b0dc`,
+ 	url: `https://newsapi.org/v2/everything?q=brexit&from=${getDateMinus5()}&sortBy=publishedAt&sources=${sources}&pageSize=100&apiKey=********************`,
   	dataType: 'json',
 
 
